@@ -26,6 +26,8 @@ public:
     void showAvailableExits();
     vector <item> itemsInCurrentRoom;
     //Backpack *bag;
+protected:
+    void getDescriptionOfRoom();
 private:
     Room *currentRoom;
 private slots:
@@ -42,6 +44,7 @@ private:
     Ui::Ship *ui;
     QGraphicsScene *scene;
     void populateItemList();
+    //QFile inputFile;
 };
 
 #endif // SHIP_H

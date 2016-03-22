@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/text">
+        <file>1_OldSupplyRoom.txt</file>
+        <file>testFile.txt</file>
+        <file>2_Hallway.txt</file>
+        <file>3_SleepingQuartersA.txt</file>
+        <file>4_SleepingQuartersB.txt</file>
+        <file>5_WeaponsRoom.txt</file>
+        <file>6_EngineRoom.txt</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>rucksack.png</file>
+    </qresource>
+</RCC>

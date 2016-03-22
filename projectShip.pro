@@ -29,5 +29,7 @@ FORMS += \
     backpack.ui \
     ship.ui
 
-DISTFILES += \
-    rucksack.png
+DISTFILES +=
+
+RESOURCES += \
+    resources.qrc

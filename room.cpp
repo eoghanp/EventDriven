@@ -1,6 +1,7 @@
 #include "Room.h"
 #include <string>
 #include "item.h"
+#include "ship.h"
 
 using namespace std;
 
@@ -46,3 +47,6 @@ void Room::addItem(item *roomItem) {
 vector <item> Room::displayItemsInRoom(){
     return itemsInRoom;
 }
+
+
+

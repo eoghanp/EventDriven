@@ -24,8 +24,6 @@ void Ship::play()
 {
     createMap();
     createRooms();
-    ui->textEdit->setText("You have woke up in a dark room with a small window. \nThere is a small window and a steel door"
-                          " in front of you. \nThe room is empty and cold.");
 }
 
 void Ship::createMap()
@@ -33,43 +31,44 @@ void Ship::createMap()
     scene = new QGraphicsScene(this);
     ui->mapOfShip->setScene(scene);
     scene->setBackgroundBrush(Qt::black);
-    QPixmap pix(":/rucksack.png");
-    QIcon ButtonIcon(pix);
-    ui->backpackButton->setIcon(ButtonIcon);
-    ui->backpackButton->setIconSize(pix.rect().size());
 }
 
 void Ship::createRooms()
 {
-    Room *a = new Room("Room one"); //start area
+    Room *a = new Room("Supply Room"); //start area
     a->addItem(new item("Oxygen Tank"));
-    Room *b = new Room("Room two");
-    Room *c = new Room("Room three");
-    Room *d = new Room("Room four");
+    Room *b = new Room("Hallway");
+    Room *c = new Room("Sleeping Quarters A");
+    Room *d = new Room("Sleeping Quarters B");
     d->addItem(new item("Red Key"));
-    Room *e = new Room("Room five");
+    Room *e = new Room("Weapons Room");
     e->addItem(new item("Crow Bar"));
-    Room *f = new Room("Room six");
-    Room *g = new Room("Room seven");
-    Room *h = new Room("Room eight");
-    Room *i = new Room("Room nine");
-    Room *j = new Room("Room ten");
+    Room *f = new Room("Engine Room");
+    Room *g = new Room("Coal Room");
+    e->addItem(new item("Shovel"));
+    Room *h = new Room("Upstairs Hallway");
+    Room *i = new Room("Kitchen");
+    Room *j = new Room("Captains Quarters");
+    j->addItem(new item("Handgun"));
+    Room *k = new Room("Sun Deck");
 
     currentRoom = a;
     ui->tempText->setText(QString::fromStdString(currentRoom->shortDescription()));
     showAvailableExits();
     populateItemList();
+    getDescriptionOfRoom();
     //(N, E, S,W)
     a->setExits(NULL, b, NULL, NULL);
-    b->setExits(d, f, c, a);
-    c->setExits(b, e, NULL, NULL);
-    d->setExits(NULL, NULL, b, NULL);
-    e->setExits(NULL, NULL, NULL, c);
-    f->setExits(g, NULL, NULL, b);
-    g->setExits(NULL, h, f, NULL);
-    h->setExits(NULL, i, j, g);
-    i->setExits(NULL, NULL, NULL, h);
-    j->setExits(h, NULL, NULL, NULL);
+    b->setExits(e, f, c, a);
+    c->setExits(b, d, NULL, NULL);
+    d->setExits(NULL, NULL, NULL, c);
+    e->setExits(NULL, NULL, b, NULL);
+    f->setExits(h, g, NULL, b);
+    g->setExits(NULL, NULL, NULL, f);
+    h->setExits(NULL, i, f, NULL);
+    i->setExits(NULL, j, k, h);
+    j->setExits(NULL, NULL, NULL, i);
+    k->setExits(i, NULL, NULL, NULL);
 
     qDebug() << "Room created";
 }
@@ -78,15 +77,13 @@ void Ship::createRooms()
 //various function calls
 void Ship::goToRoom(string dir)
 {
-
-    //ui->textEdit->setText("");
-    //maap->fontReset();
     Room* nextRoom = currentRoom->nextRoom(dir);
     currentRoom = nextRoom;
     qDebug() << "Current room is " << currentRoom;
     ui->tempText->setText(QString::fromStdString(currentRoom->shortDescription()));
     showAvailableExits();
     populateItemList();
+    getDescriptionOfRoom();
    // ui->itemList->setText(itemsInRoom);
     //ui->itemList->setText("Contains items in room");
     //ui->itemList->clear();
@@ -94,13 +91,90 @@ void Ship::goToRoom(string dir)
     //roomDescription();
     //maap->discover(currentRoom);
     //ui->itemsComboBox->clear();
-
-
-
-
-
 }
 
+void Ship::getDescriptionOfRoom()
+{
+    ui->descriptionText->clear();
+    if(currentRoom->shortDescription() == "Supply Room"){
+      QFile inputFile(":/text/1_OldSupplyRoom.txt");
+        if (inputFile.open(QIODevice::ReadOnly))
+        {
+        QTextStream in(&inputFile);
+            while (!in.atEnd() )
+            {
+                QString line = in.readLine();
+                ui->descriptionText->append(line);
+            }
+        inputFile.close();
+        }
+    }
+    else if(currentRoom->shortDescription() == "Hallway"){
+      QFile inputFile(":/text/2_Hallway.txt");
+        if (inputFile.open(QIODevice::ReadOnly))
+        {
+        QTextStream in(&inputFile);
+            while (!in.atEnd() )
+            {
+                QString line = in.readLine();
+                ui->descriptionText->append(line);
+            }
+        inputFile.close();
+        }
+    }
+    else if(currentRoom->shortDescription() == "Sleeping Quarters A"){
+      QFile inputFile(":/text/3_SleepingQuartersA.txt");
+        if (inputFile.open(QIODevice::ReadOnly))
+        {
+        QTextStream in(&inputFile);
+            while (!in.atEnd() )
+            {
+                QString line = in.readLine();
+                ui->descriptionText->append(line);
+            }
+        inputFile.close();
+        }
+    }
+    else if(currentRoom->shortDescription() == "Sleeping Quarters B"){
+      QFile inputFile(":/text/4_SleepingQuartersB.txt");
+        if (inputFile.open(QIODevice::ReadOnly))
+        {
+        QTextStream in(&inputFile);
+            while (!in.atEnd() )
+            {
+                QString line = in.readLine();
+                ui->descriptionText->append(line);
+            }
+        inputFile.close();
+        }
+    }
+    else if(currentRoom->shortDescription() == "Weapons Room"){
+      QFile inputFile(":/text/5_WeaponsRoom.txt");
+        if (inputFile.open(QIODevice::ReadOnly))
+        {
+        QTextStream in(&inputFile);
+            while (!in.atEnd() )
+            {
+                QString line = in.readLine();
+                ui->descriptionText->append(line);
+            }
+        inputFile.close();
+        }
+    }
+    else if(currentRoom->shortDescription() == "Engine Room"){
+      QFile inputFile(":/text/6_EngineRoom.txt");
+        if (inputFile.open(QIODevice::ReadOnly))
+        {
+        QTextStream in(&inputFile);
+            while (!in.atEnd() )
+            {
+                QString line = in.readLine();
+                ui->descriptionText->append(line);
+            }
+        inputFile.close();
+        }
+    }
+}
 
 void Ship::on_quitButton_clicked()
 {
@@ -138,7 +212,7 @@ void Ship::on_southButton_clicked()
 
 void Ship::showAvailableExits()
 {
-    if (currentRoom->shortDescription() == "Room one"){
+    if (currentRoom->shortDescription() == "Supply Room"){
         ui->northButton->setEnabled(false);
         ui->northButton->setText("NO EXIT");
         ui->westButton->setEnabled(false);
@@ -148,7 +222,7 @@ void Ship::showAvailableExits()
         ui->southButton->setEnabled(false);
         ui->southButton->setText("NO EXIT");
     }
-    else if (currentRoom->shortDescription() == "Room two"){
+    else if (currentRoom->shortDescription() == "Hallway"){
         ui->northButton->setEnabled(true);
         ui->northButton->setText("GO NORTH");
         ui->westButton->setEnabled(true);
@@ -158,7 +232,7 @@ void Ship::showAvailableExits()
         ui->southButton->setEnabled(true);
         ui->southButton->setText("GO SOUTH");
     }
-    else if (currentRoom->shortDescription() == "Room three"){
+    else if (currentRoom->shortDescription() == "Sleeping Quarters A"){
         ui->northButton->setEnabled(true);
         ui->northButton->setText("GO NORTH");
         ui->westButton->setEnabled(false);
@@ -168,17 +242,7 @@ void Ship::showAvailableExits()
         ui->southButton->setEnabled(false);
         ui->southButton->setText("NO EXIT");
     }
-    else if (currentRoom->shortDescription() == "Room four"){
-        ui->northButton->setEnabled(false);
-        ui->northButton->setText("NO EXIT");
-        ui->westButton->setEnabled(false);
-        ui->westButton->setText("NO EXIT");
-        ui->eastButton->setEnabled(false);
-        ui->eastButton->setText("GO EAST");
-        ui->southButton->setEnabled(true);
-        ui->southButton->setText("GO SOUTH");
-    }
-    else if (currentRoom->shortDescription() == "Room five"){
+    else if (currentRoom->shortDescription() == "Sleeping Quarters B"){
         ui->northButton->setEnabled(false);
         ui->northButton->setText("NO EXIT");
         ui->westButton->setEnabled(true);
@@ -188,17 +252,37 @@ void Ship::showAvailableExits()
         ui->southButton->setEnabled(false);
         ui->southButton->setText("NO EXIT");
     }
-    else if (currentRoom->shortDescription() == "Room six"){
+    else if (currentRoom->shortDescription() == "Weapons Room"){
+        ui->northButton->setEnabled(false);
+        ui->northButton->setText("NO EXIT");
+        ui->westButton->setEnabled(false);
+        ui->westButton->setText("NO EXIT");
+        ui->eastButton->setEnabled(false);
+        ui->eastButton->setText("GO EAST");
+        ui->southButton->setEnabled(true);
+        ui->southButton->setText("GO SOUTH");
+    }
+    else if (currentRoom->shortDescription() == "Engine Room"){
         ui->northButton->setEnabled(true);
         ui->northButton->setText("GO NORTH");
         ui->westButton->setEnabled(true);
         ui->westButton->setText("GO WEST");
+        ui->eastButton->setEnabled(true);
+        ui->eastButton->setText("GO EAST");
+        ui->southButton->setEnabled(false);
+        ui->southButton->setText("NO EXIT");
+    }
+    else if (currentRoom->shortDescription() == "Coal Room"){
+        ui->northButton->setEnabled(false);
+        ui->northButton->setText("NO EXIT");
+        ui->westButton->setEnabled(true);
+        ui->westButton->setText("GO WEST");
         ui->eastButton->setEnabled(false);
         ui->eastButton->setText("NO EXIT");
         ui->southButton->setEnabled(false);
         ui->southButton->setText("NO EXIT");
     }
-    else if (currentRoom->shortDescription() == "Room seven"){
+    else if (currentRoom->shortDescription() == "Upstairs Hallway"){
         ui->northButton->setEnabled(false);
         ui->northButton->setText("NO EXIT");
         ui->westButton->setEnabled(false);
@@ -208,7 +292,7 @@ void Ship::showAvailableExits()
         ui->southButton->setEnabled(true);
         ui->southButton->setText("GO SOUTH");
     }
-    else if (currentRoom->shortDescription() == "Room eight"){
+    else if (currentRoom->shortDescription() == "Kitchen"){
         ui->northButton->setEnabled(false);
         ui->northButton->setText("NO EXIT");
         ui->westButton->setEnabled(true);
@@ -218,7 +302,7 @@ void Ship::showAvailableExits()
         ui->southButton->setEnabled(true);
         ui->southButton->setText("GO SOUTH");
     }
-    else if (currentRoom->shortDescription() == "Room nine"){
+    else if (currentRoom->shortDescription() == "Captains Quarters"){
         ui->northButton->setEnabled(false);
         ui->northButton->setText("NO EXIT");
         ui->westButton->setEnabled(true);
@@ -228,7 +312,7 @@ void Ship::showAvailableExits()
         ui->southButton->setEnabled(false);
         ui->southButton->setText("NO EXIT");
     }
-    else if (currentRoom->shortDescription() == "Room ten"){
+    else if (currentRoom->shortDescription() == "Sun Deck"){
         ui->northButton->setEnabled(true);
         ui->northButton->setText("GO NORTH");
         ui->westButton->setEnabled(false);
