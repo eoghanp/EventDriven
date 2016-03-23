@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <string>
 #include <QGraphicsScene>
+#include "map.h"
 #include "room.h"
 #include "backpack.h"
 using namespace std;
@@ -24,6 +25,12 @@ public:
     void createRooms();
     void goToRoom(string dir);
     void showAvailableExits();
+    void discover(Room *rm);
+    void updateText();
+    /*void  Ship::updateText( const QString & newText )
+    {
+      ui->textEdit->setText( newText );
+    }*/
     vector <item> itemsInCurrentRoom;
     //Backpack *bag;
 protected:
@@ -42,6 +49,8 @@ private slots:
 
 private:
     Ui::Ship *ui;
+    QFont font;
+    Map *maap;
     QGraphicsScene *scene;
     void populateItemList();
     //QFile inputFile;

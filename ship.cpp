@@ -5,6 +5,8 @@
 #include <string>
 #include <QPixmap>
 #include <QIcon>
+#include <QString>
+
 using namespace std;
 
 Ship::Ship(QWidget *parent) :
@@ -30,6 +32,7 @@ void Ship::createMap()
 {
     scene = new QGraphicsScene(this);
     ui->mapOfShip->setScene(scene);
+    ui->mapOfShip->setBackgroundBrush(QBrush(Qt::white, Qt::SolidPattern));
     scene->setBackgroundBrush(Qt::black);
 }
 
@@ -70,7 +73,14 @@ void Ship::createRooms()
     j->setExits(NULL, NULL, NULL, i);
     k->setExits(i, NULL, NULL, NULL);
 
+    maap = new Map();
+    maap->discover(currentRoom);
     qDebug() << "Room created";
+
+    /*connect(Map::ui->supplyRoomLbl->setText(QString::fromStdString(rm->shortDescription())),
+            SIGNAL( sendText( const QString & ) ),
+             Ship::ui, SLOT( updateText( const QString & ) ) );
+    */
 }
 
 //sets current room to new room
@@ -210,6 +220,7 @@ void Ship::on_southButton_clicked()
     bag->setFocus();
 }*/
 
+
 void Ship::showAvailableExits()
 {
     if (currentRoom->shortDescription() == "Supply Room"){
@@ -331,7 +342,7 @@ void Ship::populateItemList(){
     while( i<itemsInCurrentRoom.size()){
         ui->itemList->addItem(QString::fromStdString(itemsInCurrentRoom[i].getItemName()));
         i++;
+        }
     }
-}
 
 

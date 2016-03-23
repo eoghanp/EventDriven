@@ -17,17 +17,20 @@ SOURCES += \
     item.cpp \
     main.cpp \
     room.cpp \
-    ship.cpp
+    ship.cpp \
+    map.cpp
 
 HEADERS  += \
     backpack.h \
     item.h \
     room.h \
-    ship.h
+    ship.h \
+    map.h
 
 FORMS += \
     backpack.ui \
-    ship.ui
+    ship.ui \
+    map.ui
 
 DISTFILES +=
 
