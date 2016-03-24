@@ -1,14 +1,34 @@
 <RCC>
     <qresource prefix="/text">
         <file>1_OldSupplyRoom.txt</file>
-        <file>testFile.txt</file>
         <file>2_Hallway.txt</file>
         <file>3_SleepingQuartersA.txt</file>
         <file>4_SleepingQuartersB.txt</file>
         <file>5_WeaponsRoom.txt</file>
         <file>6_EngineRoom.txt</file>
+        <file>testFile.txt</file>
+        <file>7_CoalRoom.txt</file>
+        <file>8_UpstairsHallway.txt</file>
+        <file>9_Kitchen.txt</file>
+        <file>10_CaptainsQuarters.txt</file>
     </qresource>
     <qresource prefix="/images">
         <file>rucksack.png</file>
+        <file>shipMap.png</file>
+        <file>mapBackground.png</file>
+        <file>oxygenTank.gif</file>
+        <file>crowbarImg.png</file>
+        <file>redKey.png</file>
+        <file>shovel.png</file>
+        <file>silverKey.jpeg</file>
+        <file>goldKey.jpg</file>
+        <file>handgun.jpg</file>
+        <file>mainMenuBackground.jpg</file>
+        <file>gameBackground.jpg</file>
+        <file>gameCompleteBackground.jpg</file>
+    </qresource>
+    <qresource prefix="/sounds">
+        <file>gunshot.mp3</file>
+        <file>backgroundMusic.mp3</file>
     </qresource>
 </RCC>

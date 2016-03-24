@@ -2,12 +2,14 @@
 #include <string>
 #include "item.h"
 #include "ship.h"
+#include <QDebug>
 
 using namespace std;
 
 Room::Room(string description)
 {
     this->descrption = description;
+    listOfRooms.push_back(description);
 }
 
 //returns room name
@@ -48,5 +50,9 @@ vector <item> Room::displayItemsInRoom(){
     return itemsInRoom;
 }
 
+//remove item from room
+void Room::removeItemFromRoom(int location){
+    itemsInRoom.erase(itemsInRoom.begin() + location);
+}
 
 

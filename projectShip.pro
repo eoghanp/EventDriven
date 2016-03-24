@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui \
+         multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,24 +14,29 @@ TEMPLATE = app
 
 
 SOURCES += \
-    backpack.cpp \
     item.cpp \
     main.cpp \
     room.cpp \
     ship.cpp \
-    map.cpp
+    map.cpp \
+    player.cpp \
+    startmenu.cpp \
+    gamecomplete.cpp
 
 HEADERS  += \
-    backpack.h \
     item.h \
     room.h \
     ship.h \
-    map.h
+    map.h \
+    player.h \
+    startmenu.h \
+    gamecomplete.h
 
 FORMS += \
-    backpack.ui \
     ship.ui \
-    map.ui
+    map.ui \
+    startmenu.ui \
+    gamecomplete.ui
 
 DISTFILES +=
 

@@ -29,8 +29,8 @@ void Map::discover(Room *rm)
 
     if(rm->shortDescription() =="Supply Room")
     {
-        ui->supplyRoomLbl->setText(QString::fromStdString(rm->shortDescription()));
-        ui->supplyRoomLbl->setFont(font);
+        //ui->supplyRoomLbl->setText(QString::fromStdString(rm->shortDescription()));
+        //ui->supplyRoomLbl->setFont(font);
     }
     else if (rm->shortDescription() =="Hallway")
     {
@@ -59,7 +59,7 @@ void Map::discover(Room *rm)
 void Map::fontReset()
 {
     font2.setBold(false);
-    ui->supplyRoomLbl->setFont(font2);
+    //ui->supplyRoomLbl->setFont(font2);
     ui->hallwayLbl->setFont(font2);
     /*ui->computerLbl->setFont(font2);
     ui->aLbl->setFont(font2);
