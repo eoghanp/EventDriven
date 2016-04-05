@@ -8,6 +8,8 @@ startMenu::startMenu(QWidget *parent) :
     ui(new Ui::startMenu)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint);
+    this->setWindowTitle("Main Menu");
 }
 
 startMenu::~startMenu()

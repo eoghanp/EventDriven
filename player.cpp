@@ -1,9 +1,11 @@
 #include "item.h"
 #include "player.h"
 #include <string>
+#include <QDebug>
 
-Player::Player(string description) {
+Player::Player(string description, int health) {
     this->description = description;
+    this->health = health;
 }
 //adds item to playerItem vector list
 void Player::addItem(item *item) {
@@ -13,11 +15,13 @@ void Player::addItem(item *item) {
 //checks if item is in playerItems vector list
 bool Player::checkItem(string check)
 {
-    int k =(0);
+    unsigned int k =(0);
     while(k < playerItems.size())
     {
         if(playerItems[k].getItemName() == check)
         {
+            playerItems.pop_back();
+            qDebug() << "Number of items:" << hasItem();
             return true;
         }
         k++;
@@ -30,3 +34,5 @@ int Player::hasItem()
     return playerItems.size();
 
 }
+
+

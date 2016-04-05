@@ -6,6 +6,8 @@ gameComplete::gameComplete(QWidget *parent) :
     ui(new Ui::gameComplete)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint);
+    this->setWindowTitle("Game Complete");
 }
 
 gameComplete::~gameComplete()

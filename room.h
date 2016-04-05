@@ -19,6 +19,7 @@ public:
     vector<item> displayItemsInRoom();
     vector<string> listOfRooms;
     void removeItemFromRoom(int location);
+    ~Room();
 private:
     map<string, Room*> exits;
 

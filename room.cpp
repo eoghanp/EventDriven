@@ -12,6 +12,11 @@ Room::Room(string description)
     listOfRooms.push_back(description);
 }
 
+Room::~Room()
+{
+    qDebug() << "Rooms deleted";
+}
+
 //returns room name
 string Room::shortDescription()
 {

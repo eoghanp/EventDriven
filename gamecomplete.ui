@@ -62,7 +62,7 @@ color: rgb(255, 255, 255);
     <rect>
      <x>20</x>
      <y>70</y>
-     <width>461</width>
+     <width>581</width>
      <height>61</height>
     </rect>
    </property>
@@ -71,7 +71,7 @@ color: rgb(255, 255, 255);
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>A ship has spotted you on the sundeck 
+    <string>A fishing boat has spotted you on the sundeck 
 and is on its way to rescue you.</string>
    </property>
   </widget>

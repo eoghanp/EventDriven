@@ -7,7 +7,6 @@
 #include <QtGui>
 #include <QtCore>
 #include <QFont>
-#include "map.h"
 #include "room.h"
 #include "player.h"
 #include "startmenu.h"
@@ -27,10 +26,10 @@ public:
     ~Ship();
     void play();
     void createMap();
+    bool oxygenTankUsed;
     void createRooms();
     void goToRoom(string dir);
     void showAvailableExits();
-    void discover(Room *rm);
     void updateText();
     vector <item> itemsInCurrentRoom;
     void resetTextFormat();
@@ -42,19 +41,19 @@ public:
     QString tempQSItem;
     string currItem;
     void hideInventoryItems();
+    Ui::Ship *ui;
 protected:
     void getDescriptionOfRoom();
 private:
     Room *currentRoom;
-    bool oxygenTankUsed;
+
     bool crowbarUsed;
     bool redKeyUsed;
     bool silverKeyUsed;
     bool goldKeyUsed;
     bool handgunUsed;
-    Ui::Ship *ui;
+
     QFont font;
-    Map *maap;
     QGraphicsScene *scene;
     void populateItemList();
 private slots:

@@ -16,6 +16,8 @@ Ship::Ship(QWidget *parent) :
     ui(new Ui::Ship)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint);
+    this->setWindowTitle("Lost At Sea");
 }
 
 Ship::~Ship()
@@ -40,7 +42,7 @@ void Ship::createMap()
 
 void Ship::createPlayer()
 {
-    Player *player = new Player("Bob");
+    Player *player = new Player("Bob",100);
     mainPlayer = player;
 }
 
@@ -79,7 +81,6 @@ void Ship::createRooms()
     Room *j = new Room("Captains Quarters");
     j->addItem(new item("Handgun"));
     Room *k = new Room("Sun Deck");
-
     currentRoom = a;
     ui->roomNamelbl->setText(QString::fromStdString(currentRoom->shortDescription()));
     ui->itemsInRoomlbl->setText("Items in " + QString::fromStdString(currentRoom->shortDescription()));
@@ -98,15 +99,6 @@ void Ship::createRooms()
     i->setExits(NULL, j, k, h);
     j->setExits(NULL, NULL, NULL, i);
     k->setExits(i, NULL, NULL, NULL);
-
-    maap = new Map();
-    maap->discover(currentRoom);
-    qDebug() << "Room created";
-
-    /*connect(Map::ui->supplyRoomLbl->setText(QString::fromStdString(rm->shortDescription())),
-            SIGNAL( sendText( const QString & ) ),
-             Ship::ui, SLOT( updateText( const QString & ) ) );
-    */
 }
 
 //sets current room to new room
@@ -486,20 +478,28 @@ void Ship::on_takeItemButton_clicked()
     showAvailableExits();
 
     //TODO: if object is used, remove from player list
-    if(mainPlayer->checkItem("Oxygen Tank") == true)
+    if(mainPlayer->checkItem("Oxygen Tank") == true){
         ui->oxygenTankbtn->show();
-    if(mainPlayer->checkItem("Crow Bar") == true)
+        ui->descriptionText->setText("You have picked up an oxygen tank. This will help you deal with the thin air. Click the tank icon to leave this room.");
+    }
+    else if(mainPlayer->checkItem("Crow Bar") == true){
         ui->crowbarBtn->show();
-    if(mainPlayer->checkItem("Red Key") == true)
+        ui->descriptionText->setText("You have picked up a crowbar. This could be useful to break open doors");}
+    else if(mainPlayer->checkItem("Red Key") == true){
         ui->redKeyBtn->show();
-    if(mainPlayer->checkItem("Shovel") == true)
+        ui->descriptionText->setText("You have found a red key");}
+    else if(mainPlayer->checkItem("Shovel") == true){
         ui->shovelBtn->show();
-    if(mainPlayer->checkItem("Silver Key") == true)
+        ui->descriptionText->setText("You have picked up a shovel. This may be handy to use in rooms further on.");}
+    else if(mainPlayer->checkItem("Silver Key") == true){
         ui->silverKeyBtn->show();
-    if(mainPlayer->checkItem("Gold Key") == true)
+        ui->descriptionText->setText("You have picked up a silver key!");}
+    else if(mainPlayer->checkItem("Gold Key") == true){
         ui->goldKeyBtn->show();
-    if(mainPlayer->checkItem("Handgun") == true)
+        ui->descriptionText->setText("You have found a gold key. This is a very fancy key!");}
+    else if(mainPlayer->checkItem("Handgun") == true){
         ui->handgunBtn->show();
+        ui->descriptionText->setText("You have found a handgun. Use wisely! You could try shooting open any door locks.");}
 }
 
 void Ship::on_oxygenTankbtn_clicked()
@@ -507,6 +507,7 @@ void Ship::on_oxygenTankbtn_clicked()
     ui->eastButton->setEnabled(true);
     ui->oxygenTankbtn->setEnabled(false);
     oxygenTankUsed = true;
+    ui->descriptionText->setText("Door is open");
 }
 
 void Ship::on_crowbarBtn_clicked()
@@ -515,7 +516,9 @@ void Ship::on_crowbarBtn_clicked()
        ui->southButton->setEnabled(true);
        ui->crowbarBtn->setEnabled(false);
        crowbarUsed = true;
+       ui->descriptionText->setText("You have cracked open the door with the crowbar");
    }
+   else ui->descriptionText->setText("The crowbar is useless in this room");
 }
 
 void Ship::on_redKeyBtn_clicked()
@@ -524,7 +527,9 @@ void Ship::on_redKeyBtn_clicked()
         ui->eastButton->setEnabled(true);
         ui->redKeyBtn->setEnabled(false);
         redKeyUsed = true;
+        ui->descriptionText->setText("The key fits! The door is open to the next room.");
     }
+    else ui->descriptionText->setText("The red key is useless in this room");
 }
 
 void Ship::on_shovelBtn_clicked()
@@ -535,6 +540,7 @@ void Ship::on_shovelBtn_clicked()
         ui->shovelBtn->setEnabled(false);
         ui->descriptionText->setText("LOOK theres a key!");
    }
+   else ui->descriptionText->setText("There is no need to use the shovel in this room");
 }
 
 void Ship::on_silverKeyBtn_clicked()
@@ -543,7 +549,9 @@ void Ship::on_silverKeyBtn_clicked()
         ui->northButton->setEnabled(true);
         ui->silverKeyBtn->setEnabled(false);
         silverKeyUsed = true;
+        ui->descriptionText->setText("The key fits in this door. The next room is accessible");
     }
+    else ui->descriptionText->setText("There is no door in this room that the siler key fits into");
 }
 
 void Ship::on_goldKeyBtn_clicked()
@@ -552,7 +560,9 @@ void Ship::on_goldKeyBtn_clicked()
         ui->eastButton->setEnabled(true);
         ui->silverKeyBtn->setEnabled(false);
         goldKeyUsed = true;
+        ui->descriptionText->setText("You have opened a door with a label on the door saying 'Captains Quarters'");
     }
+    else ui->descriptionText->setText("There is no door in this room that the gold key fits into");
 }
 
 void Ship::on_handgunBtn_clicked()
@@ -564,5 +574,7 @@ void Ship::on_handgunBtn_clicked()
         QMediaPlayer *shot = new QMediaPlayer();
         shot->setMedia(QUrl("qrc:/sounds/gunshot.mp3"));
         shot->play();
+        ui->descriptionText->setText("BOOM! You have shot the lock right off! NOW RUN!!");
     }
+    else ui->descriptionText->setText("Why would you waste a bullet in this room?");
 }

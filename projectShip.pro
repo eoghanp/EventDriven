@@ -18,7 +18,6 @@ SOURCES += \
     main.cpp \
     room.cpp \
     ship.cpp \
-    map.cpp \
     player.cpp \
     startmenu.cpp \
     gamecomplete.cpp
@@ -27,14 +26,12 @@ HEADERS  += \
     item.h \
     room.h \
     ship.h \
-    map.h \
     player.h \
     startmenu.h \
     gamecomplete.h
 
 FORMS += \
     ship.ui \
-    map.ui \
     startmenu.ui \
     gamecomplete.ui
 

@@ -79,6 +79,18 @@ font: 87 40pt &quot;Arial Black&quot;;</string>
      <height>538</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>1075</width>
+     <height>538</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1075</width>
+     <height>538</height>
+    </size>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-image: url(:/images/mainMenuBackground.jpg);</string>
    </property>
