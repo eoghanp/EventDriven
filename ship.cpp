@@ -105,7 +105,6 @@ void Ship::goToRoom(string dir)
 {
     Room* nextRoom = currentRoom->nextRoom(dir);
     currentRoom = nextRoom;
-    //qDebug() << "Current room is " << currentRoom;
     ui->roomNamelbl->setText(QString::fromStdString(currentRoom->shortDescription()));
     ui->itemsInRoomlbl->setText("Items in " + QString::fromStdString(currentRoom->shortDescription()));
     showAvailableExits();
