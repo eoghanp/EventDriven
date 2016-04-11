@@ -4,6 +4,7 @@
 #include <map>
 #include "item.h"
 #include <vector>
+#include <iostream>
 using namespace std;
 
 class Room
@@ -22,8 +23,6 @@ public:
     ~Room();
 private:
     map<string, Room*> exits;
-
-
 };
 
 

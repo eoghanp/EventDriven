@@ -7,13 +7,11 @@
 class Player
 {
 public:
-    Player(string description, int health);
-    void addItem(item *item);
-    bool checkItem(string check);
-    int hasItem();
-    vector <item> playerItems;
+    Player(string description);
+    virtual void addItem(item *item);
     string description;
-    int health;
+    vector <item> playerItems;
+    virtual ~Player();
 };
 
 #endif // PLAYER_H

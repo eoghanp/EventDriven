@@ -11,6 +11,7 @@ item::~item(void)
     qDebug() << "ITEM DESTROYED";
 }
 
+
 string item::getItemName(){
     return details;
 }

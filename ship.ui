@@ -152,9 +152,9 @@ color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>210</y>
+      <y>200</y>
       <width>91</width>
-      <height>16</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -168,9 +168,9 @@ color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>100</y>
+      <y>90</y>
       <width>121</width>
-      <height>21</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -185,9 +185,9 @@ color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>200</y>
+      <y>190</y>
       <width>91</width>
-      <height>21</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -201,9 +201,9 @@ color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>310</y>
+      <y>300</y>
       <width>141</width>
-      <height>20</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -218,9 +218,9 @@ font: 75 12pt &quot;Arial&quot;;</string>
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>200</y>
+      <y>190</y>
       <width>131</width>
-      <height>20</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -233,10 +233,10 @@ font: 75 12pt &quot;Arial&quot;;</string>
    <widget class="QLabel" name="upstairsHallwayLbl">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>90</y>
+      <x>340</x>
+      <y>80</y>
       <width>161</width>
-      <height>20</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -249,10 +249,10 @@ font: 75 12pt &quot;Arial&quot;;</string>
    <widget class="QLabel" name="coalRoomLbl">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>200</y>
+      <x>490</x>
+      <y>190</y>
       <width>81</width>
-      <height>20</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -266,9 +266,9 @@ font: 75 12pt &quot;Arial&quot;;</string>
     <property name="geometry">
      <rect>
       <x>570</x>
-      <y>90</y>
+      <y>80</y>
       <width>71</width>
-      <height>21</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -282,9 +282,9 @@ font: 75 12pt &quot;Arial&quot;;</string>
     <property name="geometry">
      <rect>
       <x>610</x>
-      <y>220</y>
+      <y>210</y>
       <width>81</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -301,9 +301,9 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;
     <property name="geometry">
      <rect>
       <x>690</x>
-      <y>90</y>
+      <y>80</y>
       <width>101</width>
-      <height>21</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -319,9 +319,9 @@ font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>310</y>
+      <y>300</y>
       <width>141</width>
-      <height>20</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">

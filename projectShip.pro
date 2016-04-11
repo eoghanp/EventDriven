@@ -20,7 +20,8 @@ SOURCES += \
     ship.cpp \
     player.cpp \
     startmenu.cpp \
-    gamecomplete.cpp
+    gamecomplete.cpp \
+    playerinventory.cpp
 
 HEADERS  += \
     item.h \
@@ -28,7 +29,8 @@ HEADERS  += \
     ship.h \
     player.h \
     startmenu.h \
-    gamecomplete.h
+    gamecomplete.h \
+    playerinventory.h
 
 FORMS += \
     ship.ui \

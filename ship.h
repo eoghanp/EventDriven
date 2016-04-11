@@ -11,6 +11,7 @@
 #include "player.h"
 #include "startmenu.h"
 #include "gamecomplete.h"
+#include "playerinventory.h"
 using namespace std;
 
 namespace Ui {
@@ -26,7 +27,6 @@ public:
     ~Ship();
     void play();
     void createMap();
-    bool oxygenTankUsed;
     void createRooms();
     void goToRoom(string dir);
     void showAvailableExits();
@@ -37,7 +37,7 @@ public:
     QFont fontBold;
     vector<item> inventory;
     void createPlayer();
-    Player *mainPlayer;
+    playerInventory *mainPlayer;
     QString tempQSItem;
     string currItem;
     void hideInventoryItems();
@@ -46,13 +46,12 @@ protected:
     void getDescriptionOfRoom();
 private:
     Room *currentRoom;
-
+    bool oxygenTankUsed;
     bool crowbarUsed;
     bool redKeyUsed;
     bool silverKeyUsed;
     bool goldKeyUsed;
     bool handgunUsed;
-
     QFont font;
     QGraphicsScene *scene;
     void populateItemList();

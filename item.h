@@ -8,11 +8,9 @@ using namespace std;
 
 class item
 {
-friend void getItemName();
-
 public:
     item(string name);
-    string getItemName();
+    virtual string getItemName();
     ~item();
 private:
     string details;

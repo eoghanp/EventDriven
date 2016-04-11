@@ -42,8 +42,7 @@ void Ship::createMap()
 
 void Ship::createPlayer()
 {
-    Player *player = new Player("Bob",100);
-    mainPlayer = player;
+    mainPlayer = new playerInventory("Bob");
 }
 
 void Ship::hideInventoryItems(){
@@ -102,12 +101,11 @@ void Ship::createRooms()
 }
 
 //sets current room to new room
-//various function calls
 void Ship::goToRoom(string dir)
 {
     Room* nextRoom = currentRoom->nextRoom(dir);
     currentRoom = nextRoom;
-    qDebug() << "Current room is " << currentRoom;
+    //qDebug() << "Current room is " << currentRoom;
     ui->roomNamelbl->setText(QString::fromStdString(currentRoom->shortDescription()));
     ui->itemsInRoomlbl->setText("Items in " + QString::fromStdString(currentRoom->shortDescription()));
     showAvailableExits();
@@ -300,7 +298,6 @@ void Ship::showAvailableExits()
 {
    resetTextFormat();
    QColor yellow = Qt::white;
-   // QColor black = Qt::black;
     QString fontTemplate = tr("<font color='%1'>%2</font>");
     fontItalic.setItalic(true);
     fontBold.setBold(true);
@@ -499,7 +496,8 @@ void Ship::on_takeItemButton_clicked()
         ui->descriptionText->setText("You have found a gold key. This is a very fancy key!");}
     else if(mainPlayer->checkItem("Handgun") == true){
         ui->handgunBtn->show();
-        ui->descriptionText->setText("You have found a handgun. Use wisely! You could try shooting open any door locks.");}
+        ui->descriptionText->setText("You have found a handgun. Use wisely! You could try shooting open any door locks.");
+        }
 }
 
 void Ship::on_oxygenTankbtn_clicked()
@@ -558,7 +556,7 @@ void Ship::on_goldKeyBtn_clicked()
 {
     if(currentRoom->shortDescription() == "Kitchen"){
         ui->eastButton->setEnabled(true);
-        ui->silverKeyBtn->setEnabled(false);
+        ui->goldKeyBtn->setEnabled(false);
         goldKeyUsed = true;
         ui->descriptionText->setText("You have opened a door with a label on the door saying 'Captains Quarters'");
     }

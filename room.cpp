@@ -6,6 +6,7 @@
 
 using namespace std;
 
+
 Room::Room(string description)
 {
     this->descrption = description;
